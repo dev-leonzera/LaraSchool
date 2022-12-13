@@ -4,6 +4,7 @@ namespace App\Http\Controllers;
 
 use App\Models\Professor;
 use Illuminate\Http\Request;
+use Illuminate\Support\Facades\Date;
 
 class ProfessorController extends Controller
 {
@@ -36,8 +37,15 @@ class ProfessorController extends Controller
      */
     public function store(Request $request)
     {
-        $dados = $request->all();
-        Professor::create($dados);
+        $professor = new Professor();
+        $professor->p_nome = $request->input('p_nome');
+        $professor->u_nome = $request->input('u_nome');
+        $professor->data_nasc = $request->input('data_nasc');
+        $professor->data_entrada = now()->toDateString();
+        $professor->telefone = $request->input('telefone');
+        $professor->endereco = $request->input('endereco');
+        $professor->email = $request->input('email');
+        $professor->save();
         return redirect('professores')->with('flash_message', 'Professor Cadastrado');
     }
 

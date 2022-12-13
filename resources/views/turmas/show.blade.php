@@ -3,13 +3,14 @@
 @section('content')
 <div class="card">
     <div class="card-header">
-        <h3>Contato #{{$alunos->id}}</h3>
+        <h3>Contato #{{$turma->id}}</h3>
     </div>
     <div class="card-body">
-        <h5>Nome: {{$alunos->nome}}</h5>
-        <p>Email: {{$alunos->email}}</p>
-        <p>Telefone: {{$alunos->telefone}}</p>
-        <p>Endereço: {{$alunos->endereco}}</p>
+        <h5>Nome: {{$turma->nome}}</h5>
+        <p>Série: {{$turma->serie}}ª</p>
+        <p>Ano Letivo: {{ $turma->ano_letivo }}</p>
+        <p>Professor Responsável: {{ $professor->p_nome." ".$professor->u_nome }}</p>
+        <p>Turno: {{ $turma->turno }}</p>
     </div>
 </div>
 @endsection

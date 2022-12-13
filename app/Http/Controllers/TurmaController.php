@@ -15,7 +15,7 @@ class TurmaController extends Controller
      */
     public function index()
     {
-        $turmas = Turma::where('ano_letivo', 2022)->paginate(5);
+        $turmas = Turma::with('professores')->paginate(5);
         return view('turmas.index')->with('turmas', $turmas);
     }
 
@@ -38,8 +38,15 @@ class TurmaController extends Controller
      */
     public function store(Request $request)
     {
-        $dados = $request->all();
-        Turma::create($dados);
+        $turma = new Turma();
+        $turma->id_professor = $request->input('id_professor');
+        $turma->serie = $request->input('serie');
+        $turma->ano_letivo = $request->input('ano_letivo');
+        $turma->nome = $request->input('nome');
+        $turma->data_inicio = $request->input('data_inicio');
+        $turma->data_fim = $request->input('data_fim');
+        $turma->turno = $request->input('turno');
+        $turma->save();
         return redirect('turmas')->with('flash_message', 'Turma cadastrada');
     }
 
@@ -52,7 +59,8 @@ class TurmaController extends Controller
     public function show(Turma $turma)
     {
         $turma = Turma::find($turma);
-        return view('turmas.show')->with('turmas', $turma);
+        $professor = Professor::find($turma->id_professor);
+        return view('turmas.show')->with('turmas', $turma)->with('professor', $professor);
     }
 
     /**
@@ -64,7 +72,8 @@ class TurmaController extends Controller
     public function edit(Turma $turma)
     {
         $turma = Turma::find($turma);
-        return view('turmas.edit')->with('turma', $turma);
+        $professores = Professor::all();
+        return view('turmas.edit')->with('turma', $turma)->with('professores', $professores);
     }
 
     /**

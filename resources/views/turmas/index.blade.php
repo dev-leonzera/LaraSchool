@@ -35,14 +35,17 @@
                                         <th>Nome</th>
                                         <th>Série</th>
                                         <th>Ano Letivo</th>
+                                        <th>Professor</th>
+                                        <th>Ações</th>
                                     </tr>
                                 </thead>
                                 <tbody>
                                 @foreach($turmas as $turma)
                                     <tr>
                                         <td>{{ $turma->nome }}</td>
-                                        <td>{{ $turma->serie }}</td>
+                                        <td>{{ $turma->serie }}ª</td>
                                         <td>{{ $turma->ano_letivo }}</td>
+                                        <td>{{ $turma->professores->p_nome." ".$turma->professores->u_nome }}</td>
                                         <td>
                                             <a href="#" class="btn btn-primary btn-sm">
                                                 <i class="fa fa-eye"></i>

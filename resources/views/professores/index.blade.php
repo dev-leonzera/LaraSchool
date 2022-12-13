@@ -35,6 +35,7 @@
                                         <th>Nome</th>
                                         <th>Email</th>
                                         <th>Ativo?</th>
+                                        <th>Ações</th>
                                     </tr>
                                 </thead>
                                 <tbody>
@@ -47,7 +48,6 @@
                                         @else
                                             <td>Não</td>
                                         @endif
-                                        <td>{{ $professor->email }}</td>
                                         <td>
                                             <a href="#" class="btn btn-primary btn-sm">
                                                 <i class="fa fa-eye"></i>

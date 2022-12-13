@@ -10,7 +10,7 @@ class AlunoController extends Controller
 {
     public function index()
     {
-        $alunos = Aluno::where('status_matricula', 'ativo')->paginate(5);
+        $alunos = Aluno::with('turma')->paginate(5);
         return view('alunos.index')->with('alunos', $alunos);
     }
 
@@ -33,9 +33,18 @@ class AlunoController extends Controller
      */
     public function store(Request $request)
     {
-        $dados = $request->all();
-        Aluno::create($dados);
-        return redirect('aluno')->with('flash_message', 'Aluno cadastrado');
+        $aluno = new Aluno();
+        $aluno->id_turma = $request->input('id_turma');
+        $aluno->nome = $request->input('nome');
+        $aluno->nome_pai = $request->input('nome_pai');
+        $aluno->nome_mae = $request->input('nome_mae');
+        $aluno->telefone = $request->input('telefone');
+        $aluno->endereco = $request->input('endereco');
+        $aluno->data_nasc = $request->input('data_nasc');
+        $aluno->data_matricula = now()->toDateString();
+        $aluno->status_matricula = 'ativo';
+        $aluno->save();
+        return redirect('alunos')->with('flash_message', 'Aluno cadastrado');
     }
 
     /**
@@ -47,7 +56,8 @@ class AlunoController extends Controller
     public function show($id)
     {
         $aluno = Aluno::find($id);
-        return view('alunos.show')->with('alunos', $aluno);
+        $turma = Turma::find($aluno->id_turma);
+        return view('alunos.show')->with('alunos', $aluno)->with('turma', $turma);
     }
 
     /**
@@ -59,7 +69,8 @@ class AlunoController extends Controller
     public function edit($id)
     {
         $aluno = Aluno::find($id);
-        return view('alunos.update')->with('alunos', $aluno);
+        $turmas = Turma::all();
+        return view('alunos.update')->with('alunos', $aluno)->with('turmas', $turmas);
     }
 
     /**

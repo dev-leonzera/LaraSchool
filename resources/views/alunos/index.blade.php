@@ -33,16 +33,17 @@
                                 <thead>
                                     <tr>
                                         <th>Nome</th>
-                                        <th>Email</th>
+                                        <th>Turma</th>
+                                        <th>Ações</th>
                                     </tr>
                                 </thead>
                                 <tbody>
                                 @foreach($alunos as $aluno)
                                     <tr>
                                         <td>{{ $aluno->nome }}</td>
-                                        <td>{{ $aluno->data_matricula }}</td>
+                                        <td>{{ $aluno->turma->nome }}</td>
                                         <td>
-                                            <a href="#" class="btn btn-primary btn-sm">
+                                            <a href="{{ url('/alunos/' . $aluno->id) }}" class="btn btn-primary btn-sm">
                                                 <i class="fa fa-eye"></i>
                                                 Ver
                                             </a>

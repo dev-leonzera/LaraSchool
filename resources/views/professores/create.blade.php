@@ -9,8 +9,10 @@
     <div class="card-body">
         <form action="{{url('professores')}}" method="post">
             {!! csrf_field() !!}
-            <label for="nome">Nome</label><br>
-            <input type="text" name="nome" id="nome" class="form-control"><br>
+            <label for="nome">Primeiro Nome</label><br>
+            <input type="text" name="p_nome" id="nome" class="form-control"><br>
+            <label for="nome">Último Nome</label><br>
+            <input type="text" name="u_nome" id="nome" class="form-control"><br>
             <label for="email">Email</label><br>
             <input type="text" name="email" id="email" class="form-control"><br>
             <label for="telefone">Telefone</label><br>

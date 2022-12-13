@@ -3,13 +3,18 @@
 @section('content')
 <div class="card">
     <div class="card-header">
-        <h3>Contato #{{$alunos->id}}</h3>
+        <h3>Professor #{{$professor->id}}</h3>
     </div>
     <div class="card-body">
-        <h5>Nome: {{$alunos->nome}}</h5>
-        <p>Email: {{$alunos->email}}</p>
-        <p>Telefone: {{$alunos->telefone}}</p>
-        <p>Endereço: {{$alunos->endereco}}</p>
+        <h5>Nome: {{$professor->nome}}</h5>
+        <p>Email: {{$professor->email}}</p>
+        <p>Telefone: {{$professor->telefone}}</p>
+        <p>Endereço: {{$professor->endereco}}</p>
+        @if ($professor->ativo)
+            <p>Sim</p>
+        @else
+            <p>Não</p>
+        @endif
     </div>
 </div>
 @endsection
