@@ -21,7 +21,7 @@
                     <div class="card">
                         <div class="card-body">
                             <p class="card-text">
-                                {{ __('You are logged in!') }}
+                                {{ __('Bem vindo ao LaraSchool') }}
                             </p>
                         </div>
                     </div>

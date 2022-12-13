@@ -70,7 +70,7 @@ class AlunoController extends Controller
     {
         $aluno = Aluno::find($id);
         $turmas = Turma::all();
-        return view('alunos.update')->with('alunos', $aluno)->with('turmas', $turmas);
+        return view('alunos.edit')->with('aluno', $aluno)->with('turmas', $turmas);
     }
 
     /**
@@ -83,9 +83,16 @@ class AlunoController extends Controller
     public function update(Request $request, $id)
     {
         $aluno = Aluno::find($id);
-        $dados = $request->all();
-        $aluno->update($dados);
-        return redirect('aluno')->with('flash_message', 'Aluno atualizado');
+        $aluno->id_turma = $request->input('id_turma');
+        $aluno->nome = $request->input('nome');
+        $aluno->nome_pai = $request->input('nome_pai');
+        $aluno->nome_mae = $request->input('nome_mae');
+        $aluno->telefone = $request->input('telefone');
+        $aluno->endereco = $request->input('endereco');
+        $aluno->data_nasc = $request->input('data_nasc');
+        $aluno->status_matricula = $request->input('status_matricula');
+        $aluno->update();
+        return redirect('alunos')->with('flash_message', 'Aluno atualizado');
     }
 
     /**
@@ -97,6 +104,6 @@ class AlunoController extends Controller
     public function destroy($id)
     {
         Aluno::destroy($id);
-        return redirect('aluno')->with('flash_message', 'Aluno removido');
+        return redirect('alunos')->with('flash_message', 'Aluno removido');
     }
 }

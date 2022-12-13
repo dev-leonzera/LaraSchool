@@ -3,7 +3,7 @@
 @section('content')
 <div class="card">
     <div class="card-header">
-        <h3>Contato #{{$turma->id}}</h3>
+        <h3>Turma #{{$turma->id}}</h3>
     </div>
     <div class="card-body">
         <h5>Nome: {{$turma->nome}}</h5>

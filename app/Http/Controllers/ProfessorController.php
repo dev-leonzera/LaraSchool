@@ -15,7 +15,7 @@ class ProfessorController extends Controller
      */
     public function index()
     {
-        $professores = Professor::where('ativo', true)->paginate(5);
+        $professores = Professor::paginate(5);
         return view('professores.index')->with('professores', $professores);
     }
 
@@ -55,10 +55,10 @@ class ProfessorController extends Controller
      * @param  \App\Models\Professor  $professor
      * @return \Illuminate\Http\Response
      */
-    public function show(Professor $professor)
+    public function show($id)
     {
-        $prof = Professor::find($professor);
-        return view('professores.show')->with('professor', $prof);
+        $professor = Professor::find($id);
+        return view('professores.show')->with('professor', $professor);
     }
 
     /**
@@ -67,10 +67,10 @@ class ProfessorController extends Controller
      * @param  \App\Models\Professor  $professor
      * @return \Illuminate\Http\Response
      */
-    public function edit(Professor $professor)
+    public function edit($id)
     {
-        $prof = Professor::find($professor);
-        return view('professores.edit')->with('professor', $prof);
+        $professor = Professor::find($id);
+        return view('professores.edit')->with('professor', $professor);
     }
 
     /**
@@ -80,11 +80,17 @@ class ProfessorController extends Controller
      * @param  \App\Models\Professor  $professor
      * @return \Illuminate\Http\Response
      */
-    public function update(Request $request, Professor $professor)
+    public function update(Request $request, $id)
     {
-        $prof = Professor::find($professor);
-        $dados = $request->all();
-        $prof->update($dados);
+        $professor = Professor::find($id);
+        $professor->p_nome = $request->input('p_nome');
+        $professor->u_nome = $request->input('u_nome');
+        $professor->data_nasc = $request->input('data_nasc');
+        $professor->telefone = $request->input('telefone');
+        $professor->endereco = $request->input('endereco');
+        $professor->email = $request->input('email');
+        $professor->ativo = intval($request->input('ativo'));
+        $professor->update();
         return redirect('professores')->with('flash_message', 'Professor atualizado');
     }
 
@@ -94,9 +100,9 @@ class ProfessorController extends Controller
      * @param  \App\Models\Professor  $professor
      * @return \Illuminate\Http\Response
      */
-    public function destroy(Professor $professor)
+    public function destroy($id)
     {
-        Professor::destroy($professor);
+        Professor::destroy($id);
         return redirect('professores')->with('flash_message', 'Professor removido');
     }
 }

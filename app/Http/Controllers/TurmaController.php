@@ -56,11 +56,19 @@ class TurmaController extends Controller
      * @param  \App\Models\Turma  $turma
      * @return \Illuminate\Http\Response
      */
-    public function show(Turma $turma)
+    public function show($id)
     {
-        $turma = Turma::find($turma);
+        $turma = Turma::find($id);
+        switch ($turma->turno){
+            case 'm':
+                $turma->turno = 'Matutino';
+                break;
+            case 'v':
+                $turma->turno = 'Vespertino';
+                break;
+        }
         $professor = Professor::find($turma->id_professor);
-        return view('turmas.show')->with('turmas', $turma)->with('professor', $professor);
+        return view('turmas.show')->with('turma', $turma)->with('professor', $professor);
     }
 
     /**
@@ -69,9 +77,9 @@ class TurmaController extends Controller
      * @param  \App\Models\Turma  $turma
      * @return \Illuminate\Http\Response
      */
-    public function edit(Turma $turma)
+    public function edit($id)
     {
-        $turma = Turma::find($turma);
+        $turma = Turma::find($id);
         $professores = Professor::all();
         return view('turmas.edit')->with('turma', $turma)->with('professores', $professores);
     }
@@ -83,9 +91,9 @@ class TurmaController extends Controller
      * @param  \App\Models\Turma  $turma
      * @return \Illuminate\Http\Response
      */
-    public function update(Request $request, Turma $turma)
+    public function update(Request $request, $id)
     {
-        $turma = Turma::find($turma);
+        $turma = Turma::find($id);
         $dados = $request->all();
         $turma->update($dados);
         return redirect('turmas')->with('flash_message', 'Turma atualizada');
@@ -97,9 +105,9 @@ class TurmaController extends Controller
      * @param  \App\Models\Turma  $turma
      * @return \Illuminate\Http\Response
      */
-    public function destroy(Turma $turma)
+    public function destroy($id)
     {
-        Turma::destroy($turma);
+        Turma::destroy($id);
         return redirect('turmas')->with('Turma removida');
     }
 }

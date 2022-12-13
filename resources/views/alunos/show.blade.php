@@ -9,10 +9,10 @@
         <h5>Nome: {{$alunos->nome}}</h5>
         <p>Nome do Pai: {{ $alunos->nome_pai }}</p>
         <p>Nome da Mãe: {{ $alunos->nome_mae }}</p>
-        <p>Data de Nascimento: {{ $alunos->data_nasc->format('d/m/Y') }}</p>
+        <p>Data de Nascimento: {{ date("d/m/Y", strtotime($alunos->data_nasc)) }}</p>
         <p>Telefone: {{$alunos->telefone}}</p>
         <p>Endereço: {{$alunos->endereco}}</p>
-        <p>Data de Matrícula: {{ $alunos->data_matricula->format('d/m/Y') }}</p>
+        <p>Data de Matrícula: {{ date("d/m/Y", strtotime($alunos->data_matricula)) }}</p>
         <p>Série: {{ $turma->serie }}ª</p>
         <p>Turma: {{ $turma->nome }}</p>
     </div>

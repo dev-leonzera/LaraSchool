@@ -9,8 +9,6 @@ class Aluno extends Model
 {
     protected $fillable = [];
 
-    protected $dates = ['data_nasc', 'data_matricula'];
-
     public function turma(){
         return $this->belongsTo(Turma::class, 'id_turma');
     }

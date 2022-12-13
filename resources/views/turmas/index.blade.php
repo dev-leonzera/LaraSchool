@@ -47,18 +47,22 @@
                                         <td>{{ $turma->ano_letivo }}</td>
                                         <td>{{ $turma->professores->p_nome." ".$turma->professores->u_nome }}</td>
                                         <td>
-                                            <a href="#" class="btn btn-primary btn-sm">
+                                            <a href="{{ url('/turmas/' . $turma->id) }}" class="btn btn-primary btn-sm">
                                                 <i class="fa fa-eye"></i>
                                                 Ver
                                             </a>
-                                            <a href="#" class="btn btn-secondary btn-sm">
+                                            <a href="{{ url(url('/turmas/' . $turma->id . '/edit')) }}" class="btn btn-secondary btn-sm">
                                                 <i class="fa fa-edit"></i>
                                                 Editar
                                             </a>
-                                            <a href="#" class="btn btn-danger btn-sm">
-                                                <i class="fa fa-eye"></i>
-                                                Inativar
-                                            </a>
+                                            <form action="{{url('/turmas/' . $turma->id)}}" method="post" style="display: inline">
+                                                {{@method_field('DELETE')}}
+                                                {!! csrf_field() !!}
+                                                <button type="submit" class="btn btn-danger btn-sm">
+                                                    <i class="fa fa-trash"></i>
+                                                    Apagar
+                                                </button>
+                                            </form>
                                         </td>
                                     </tr>
                                 @endforeach

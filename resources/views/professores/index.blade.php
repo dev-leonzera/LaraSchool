@@ -49,18 +49,22 @@
                                             <td>Não</td>
                                         @endif
                                         <td>
-                                            <a href="#" class="btn btn-primary btn-sm">
+                                            <a href="{{ url('/professores/' . $professor->id) }}" class="btn btn-primary btn-sm">
                                                 <i class="fa fa-eye"></i>
                                                 Ver
                                             </a>
-                                            <a href="#" class="btn btn-secondary btn-sm">
+                                            <a href="{{ url('/professores/' . $professor->id . '/edit') }}" class="btn btn-secondary btn-sm">
                                                 <i class="fa fa-edit"></i>
                                                 Editar
                                             </a>
-                                            <a href="#" class="btn btn-danger btn-sm">
-                                                <i class="fa fa-eye"></i>
-                                                Inativar
-                                            </a>
+                                            <form action="{{url('/professores/' . $professor->id)}}" method="post" style="display: inline">
+                                                {{@method_field('DELETE')}}
+                                                {!! csrf_field() !!}
+                                                <button type="submit" class="btn btn-danger btn-sm">
+                                                    <i class="fa fa-trash"></i>
+                                                    Apagar
+                                                </button>
+                                            </form>
                                         </td>
                                     </tr>
                                 @endforeach
