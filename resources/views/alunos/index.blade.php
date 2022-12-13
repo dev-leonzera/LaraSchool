@@ -20,7 +20,7 @@
                 <div class="col-lg-12">
 
                     <div class="">
-                        <a href="#" class="btn btn-success btn-md mb-2">
+                        <a href="{{ route('alunos.create') }}" class="btn btn-success btn-md mb-2">
                             <i class="fa fa-plus"></i>
                             Novo aluno
                         </a>
@@ -32,15 +32,15 @@
                             <table class="table">
                                 <thead>
                                     <tr>
-                                        <th>Name</th>
+                                        <th>Nome</th>
                                         <th>Email</th>
                                     </tr>
                                 </thead>
                                 <tbody>
-                                @foreach($users as $user)
+                                @foreach($alunos as $aluno)
                                     <tr>
-                                        <td>{{ $user->name }}</td>
-                                        <td>{{ $user->email }}</td>
+                                        <td>{{ $aluno->nome }}</td>
+                                        <td>{{ $aluno->data_matricula }}</td>
                                         <td>
                                             <a href="#" class="btn btn-primary btn-sm">
                                                 <i class="fa fa-eye"></i>
@@ -63,7 +63,7 @@
                         <!-- /.card-body -->
 
                         <div class="card-footer clearfix">
-                            {{ $users->links() }}
+                            {{ $alunos->links() }}
                         </div>
                     </div>
 

@@ -24,13 +24,13 @@
                 <a href="{{ route('users.index') }}" class="nav-link">
                     <i class="nav-icon fas fa-users"></i>
                     <p>
-                        {{ __('Users') }}
+                        {{ __('Usuários') }}
                     </p>
                 </a>
             </li>
 
             <li class="nav-item">
-                <a href="{{ route('students.index') }}" class="nav-link">
+                <a href="{{ route('alunos.index') }}" class="nav-link">
                     <i class="nav-icon fas fa-users"></i>
                     <p>
                         {{ __('Alunos') }}
@@ -39,7 +39,7 @@
             </li>
 
             <li class="nav-item">
-                <a href="{{ route('students.index') }}" class="nav-link">
+                <a href="{{ route('professores.index') }}" class="nav-link">
                     <i class="nav-icon fas fa-users"></i>
                     <p>
                         {{ __('Professores') }}
@@ -48,7 +48,7 @@
             </li>
 
             <li class="nav-item">
-                <a href="{{ route('users.index') }}" class="nav-link">
+                <a href="{{ route('turmas.index') }}" class="nav-link">
                     <i class="nav-icon fas fa-users"></i>
                     <p>
                         {{ __('Turmas') }}
@@ -56,7 +56,7 @@
                 </a>
             </li>
 
-            <li class="nav-item">
+            {{-- <li class="nav-item">
                 <a href="{{ route('about') }}" class="nav-link">
                     <i class="nav-icon far fa-address-card"></i>
                     <p>
@@ -81,7 +81,7 @@
                         </a>
                     </li>
                 </ul>
-            </li>
+            </li> --}}
         </ul>
     </nav>
     <!-- /.sidebar-menu -->

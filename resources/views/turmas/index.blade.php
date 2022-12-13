@@ -6,7 +6,7 @@
         <div class="container-fluid">
             <div class="row mb-2">
                 <div class="col-sm-6">
-                    <h1 class="m-0">{{ __('Usuários') }}</h1>
+                    <h1 class="m-0">{{ __('Turmas') }}</h1>
                 </div><!-- /.col -->
             </div><!-- /.row -->
         </div><!-- /.container-fluid -->
@@ -20,9 +20,9 @@
                 <div class="col-lg-12">
 
                     <div class="">
-                        <a href="#" class="btn btn-success btn-md mb-2">
+                        <a href="{{ route('turmas.create') }}" class="btn btn-success btn-md mb-2">
                             <i class="fa fa-plus"></i>
-                            Novo usuário
+                            Nova turma
                         </a>
                     </div>
 
@@ -32,16 +32,17 @@
                             <table class="table">
                                 <thead>
                                     <tr>
-                                        <th>Name</th>
-                                        <th>Email</th>
-                                        <th>Ações</th>
+                                        <th>Nome</th>
+                                        <th>Série</th>
+                                        <th>Ano Letivo</th>
                                     </tr>
                                 </thead>
                                 <tbody>
-                                @foreach($users as $user)
+                                @foreach($turmas as $turma)
                                     <tr>
-                                        <td>{{ $user->name }}</td>
-                                        <td>{{ $user->email }}</td>
+                                        <td>{{ $turma->nome }}</td>
+                                        <td>{{ $turma->serie }}</td>
+                                        <td>{{ $turma->ano_letivo }}</td>
                                         <td>
                                             <a href="#" class="btn btn-primary btn-sm">
                                                 <i class="fa fa-eye"></i>
@@ -64,7 +65,7 @@
                         <!-- /.card-body -->
 
                         <div class="card-footer clearfix">
-                            {{ $users->links() }}
+                            {{ $turmas->links() }}
                         </div>
                     </div>
 
