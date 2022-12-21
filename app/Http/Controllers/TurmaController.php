@@ -4,6 +4,7 @@ namespace App\Http\Controllers;
 
 use App\Models\Professor;
 use App\Models\Turma;
+use App\Models\Aluno;
 use Illuminate\Http\Request;
 
 class TurmaController extends Controller
@@ -68,7 +69,8 @@ class TurmaController extends Controller
                 break;
         }
         $professor = Professor::find($turma->id_professor);
-        return view('turmas.show')->with('turma', $turma)->with('professor', $professor);
+        $alunos = Aluno::where('id_turma', $turma->id)->orderBy('nome')->get();
+        return view('turmas.show')->with('turma', $turma)->with('professor', $professor)->with('alunos', $alunos);
     }
 
     /**
