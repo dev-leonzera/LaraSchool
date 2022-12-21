@@ -31,7 +31,7 @@
 
             <li class="nav-item">
                 <a href="{{ route('alunos.index') }}" class="nav-link">
-                    <i class="nav-icon fas fa-users"></i>
+                    <i class="nav-icon fas fa-user-graduate"></i>
                     <p>
                         {{ __('Alunos') }}
                     </p>
@@ -40,7 +40,7 @@
 
             <li class="nav-item">
                 <a href="{{ route('professores.index') }}" class="nav-link">
-                    <i class="nav-icon fas fa-users"></i>
+                    <i class="nav-icon fas fa-chalkboard"></i>
                     <p>
                         {{ __('Professores') }}
                     </p>
@@ -49,7 +49,7 @@
 
             <li class="nav-item">
                 <a href="{{ route('turmas.index') }}" class="nav-link">
-                    <i class="nav-icon fas fa-users"></i>
+                    <i class="nav-icon fas fa-graduation-cap"></i>
                     <p>
                         {{ __('Turmas') }}
                     </p>
