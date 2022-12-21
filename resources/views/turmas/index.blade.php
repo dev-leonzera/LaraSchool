@@ -35,7 +35,7 @@
                                         <th>Nome</th>
                                         <th>Série</th>
                                         <th>Ano Letivo</th>
-                                        <th>Professor</th>
+                                        <th>Professor Responsável</th>
                                         <th>Ações</th>
                                     </tr>
                                 </thead>

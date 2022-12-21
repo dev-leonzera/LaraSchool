@@ -53,7 +53,9 @@
         </form>
 
         @if (Route::has('register'))
-            <a href="{{ route('register') }}">{{ __('Não tem conta? Cadastre-se aqui') }}</a>
+            <p class="my-3">
+                <a href="{{ route('register') }}">{{ __('Não tem conta? Cadastre-se aqui') }}</a>
+            </p>
         @endif
 
         @if (Route::has('password.request'))
