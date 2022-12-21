@@ -2,6 +2,9 @@
 
 namespace App\Http\Controllers;
 
+use App\Models\Professor;
+use App\Models\Turma;
+use App\Models\Aluno;
 use Illuminate\Http\Request;
 
 class HomeController extends Controller
@@ -23,6 +26,9 @@ class HomeController extends Controller
      */
     public function index()
     {
-        return view('home');
+        $count_prof = Professor::all()->count();
+        $count_turmas = Turma::all()->count();
+        $count_alunos = Aluno::all()->count();
+        return view('home')->with('count_prof', $count_prof)->with('count_turmas', $count_turmas)->with('count_alunos', $count_alunos);
     }
 }

@@ -10,8 +10,8 @@
         <p>Ano Letivo: {{ $turma->ano_letivo }}</p>
         <p>Professor Responsável: {{ $professor->p_nome." ".$professor->u_nome }}</p>
         <p>Turno: {{ $turma->turno }}</p>
-        <div >
 
+        <div>
             <h2>Lista de Alunos</h2>
             <table class="table">
                 <thead>
@@ -22,7 +22,11 @@
                 <tbody>
                     @foreach ($alunos as $aluno)
                         <tr>
-                            <td>{{ $aluno->nome }}</td>
+                            <td>
+                                <a href="{{ url('/alunos/' . $aluno->id) }}">
+                                    {{ $aluno->nome }}
+                                </a>
+                            </td>
                         </tr>
                     @endforeach
                 </tbody>
