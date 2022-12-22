@@ -29,6 +29,9 @@ class HomeController extends Controller
         $count_prof = Professor::all()->count();
         $count_turmas = Turma::all()->count();
         $count_alunos = Aluno::all()->count();
-        return view('home')->with('count_prof', $count_prof)->with('count_turmas', $count_turmas)->with('count_alunos', $count_alunos);
+        return view('home')
+            ->with('count_prof', $count_prof)
+            ->with('count_turmas', $count_turmas)
+            ->with('count_alunos', $count_alunos);
     }
 }
