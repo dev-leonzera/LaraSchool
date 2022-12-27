@@ -1,7 +1,8 @@
-Repositório do teste técnico para a vaga de Desenvolvedor Full-stack da PAM
+Repositório para estudos do framework Laravel
 
-## Sistema de Gestão Escolar LaraSchool
+## LaraSchool
 
+- Sistema de Gestão Escolar
 - Gerenciamento de Professores
 - Gerenciamento de Turmas
 - Gerenciamento de Alunos
