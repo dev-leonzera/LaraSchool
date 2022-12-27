@@ -69,7 +69,7 @@ class TurmaController extends Controller
                 break;
         }
         $professor = Professor::find($turma->id_professor);
-        $alunos = Aluno::where('id_turma', $turma->id)->orderBy('nome')->get();
+        $alunos = $turma->alunos()->orderBy('nome')->get();
         return view('turmas.show')->with('turma', $turma)->with('professor', $professor)->with('alunos', $alunos);
     }
 
